@@ -3,39 +3,56 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
-
+var mongodb = require('./mongodb');
 
 app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
+var routes = require('./routes/index');
+app.use('/', routes);
+// app.use('/users', users);
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/personal', function(req, res) {
-   res.sendFile(path.join(__dirname) + '/views/personal.html');
-});
+mongodb.initializeDB();
 
-app.get('/', function(req, res) {
-   res.sendFile(path.join(__dirname) + '/views/homepage.html');
-});
-
-app.get('/signup', function(req, res) {
-   res.sendFile(path.join(__dirname) + '/views/signup.html');
-});
-app.get('/updateData', function(req, res) {
-   res.sendFile(path.join(__dirname) + '/views/updateData.html');
-});
-app.get('/myFile', function(req, res) {
-   res.sendFile(path.join(__dirname) + '/views/myFile.html');
+http.listen(3000, function(){
+  console.log('listening on *:3000');
 });
 
 io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('disconnect', function(){
+    console.log('user left');
   });
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+
+  socket.on('createNewUser', function(user_info){
+    mongodb.createUser(user_info);
   });
+
+  socket.on('on load', function(){
+    console.log('onload');
+  });
+
+  socket.on('check user', function(user_info) {
+    mongodb.checkUser(user_info, function(res){
+      if (res) {
+        socket.emit('user verified');
+      } else {
+        socket.emit('user verification failed');
+      }
+    });
+  });
+
+  socket.on('checkUserByEmail', function(msg) {
+    // console.log(email);
+    mongodb.checkUserByEmail(msg, function(res){
+      if (res) {
+        socket.emit('email not avaliable');
+      } else {
+        socket.emit('email avaliable');
+      }
+    });
+  })
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
-});
+module.exports = app;
