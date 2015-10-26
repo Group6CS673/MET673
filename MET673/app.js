@@ -4,6 +4,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 var mongodb = require('./mongodb');
+var validator = require("email-validator");
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -40,13 +41,17 @@ io.on('connection', function(socket){
   });
 
   socket.on('checkUserByEmail', function(msg) {
-    mongodb.checkUserByEmail(msg, function(res){
-      if (res) {
-        socket.emit('email not avaliable');
-      } else {
-        socket.emit('email avaliable');
-      }
-    });
+    if (validator.validate(msg)) {
+      mongodb.checkUserByEmail(msg, function(res){
+        if (res) {
+          socket.emit('email not avaliable','Email already exist.');
+        } else {
+          socket.emit('email avaliable');
+        }
+      });
+    } else {
+      socket.emit('email not avaliable','Please input valid email.');
+    }
   });
 
   socket.on('personal_data',function(msg){

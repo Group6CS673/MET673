@@ -25,7 +25,7 @@ module.exports = {
       password: user_info.password
     });
     user.save(function(err) {
-      if (err) return handleError(err);
+      if (err) return console.log(err);
       else {
         console.log('Updated', user);
       }
@@ -72,55 +72,5 @@ module.exports = {
         callback(res);
       }
     });
-  },
-  // Retrieve a single Mote from start - end
-  retrieveMote: function(mote, start, end, callback) {
-    Motes.find({
-      timestamp: {
-        $gte: start,
-        $lte: end
-      },
-      identity: mote
-    })
-    .select('timestamp kelvin fahrenheit celsius')
-    .sort('timestamp')
-    .exec(function(err, results) {
-      if (err) { console.log(err); }
-      else {
-        // console.log(results);
-        callback(results);
-      }
-    });
-  },
-
-  // Retrieve averages from start - end
-  retrieveAverages: function(start, end, callback) {
-    Averages.find({
-      timestamp: {
-        $gte: start,
-        $lte: end
-      }
-    })
-    .select('timestamp identity kelvin fahrenheit celsius')
-    .sort('timestamp')
-    .exec(function(err, results) {
-      if (err) { console.log(err); }
-      else {
-        // console.log(results);
-        callback(results);
-      }
-    });
-  },
-
-   getDistinctMotes: function(callback) {
-     Motes.find()
-     .distinct('identity')
-     .exec(function(err, results) {
-       if (err) { console.log(err); }
-       else {
-        //  console.log(results);
-         callback(results); }
-     });
-   }
-
+  }
  }
