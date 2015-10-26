@@ -48,9 +48,10 @@
 
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form id="myFile" class="navbar-form navbar-right" method="post" action="/myFile">
+          <form id="myFile" class="navbar-form navbar-right" method="post" action="/updateData">
             <label style="color:white">Welcome, </label>
-            <a style="color: white" id="updateData" name="user"><%=user_name%></a>
+            <a style="color: white" id="updateData" ><%=user_name%></a>
+            <input type="hidden" value="<%=user_email%>" name="email"></input>
             <a class="btn btn-success" href="/">Sign out</a>
           </form>
         </div><!--/.navbar-collapse -->

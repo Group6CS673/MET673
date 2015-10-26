@@ -29,10 +29,6 @@ io.on('connection', function(socket){
     mongodb.createUser(user_info);
   });
 
-  socket.on('on load', function(){
-    console.log('onload');
-  });
-
   socket.on('check user', function(user_info) {
     mongodb.checkUser(user_info, function(res){
       if (res) {
@@ -44,7 +40,6 @@ io.on('connection', function(socket){
   });
 
   socket.on('checkUserByEmail', function(msg) {
-    // console.log(email);
     mongodb.checkUserByEmail(msg, function(res){
       if (res) {
         socket.emit('email not avaliable');
@@ -52,7 +47,11 @@ io.on('connection', function(socket){
         socket.emit('email avaliable');
       }
     });
-  })
+  });
+
+  socket.on('personal_data',function(msg){
+    mongodb.userDataUpdate(msg);
+  });
 });
 
 module.exports = app;

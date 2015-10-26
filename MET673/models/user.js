@@ -12,7 +12,9 @@ var UserData = mongoose.model('UserData',{
 	timestamp: Date,
 	steps: Number,
 	calorie: Number,
-	sleep_hours: Number
+	sleep_hours: Number,
+	// nutrition: String,
+	heart_rates: Number
 });
 
 module.exports = {

@@ -24,7 +24,7 @@ socket.on('email avaliable', function() {
       password: $('#inputPassword').val()
     }
     socket.emit('createNewUser', user_info);
-    window.location.href='/personal';
+    $('#signup').submit();
   }
 });
 socket.on('email not avaliable', function(){
