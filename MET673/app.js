@@ -57,6 +57,14 @@ io.on('connection', function(socket){
   socket.on('personal_data',function(msg){
     mongodb.userDataUpdate(msg);
   });
+
+  socket.on('get data', function(startDate){
+    console.log(startDate);
+    mongodb.getData(startDate,function(res) {
+      socket.emit('chart data', res);
+      console.log(res);
+    })
+  });
 });
 
 module.exports = app;

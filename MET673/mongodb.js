@@ -33,9 +33,10 @@ module.exports = {
   },
   // Store Mote Data
   userDataUpdate: function(user_data) {
+    var date = new Date();
     var userNewData = new UserData({
       email: user_data.email,
-      timestamp: new Date(),
+      timestamp: date.getTime(),
       steps: user_data.steps,
       calorie: user_data.calorie,
       sleep_hours: user_data.sleep_hours,
@@ -65,6 +66,18 @@ module.exports = {
   checkUserByEmail: function(msg,callback){
     User.findOne({
       email: msg,
+    }).exec(function(err, res) {
+      if (err) {
+        console.log(err);
+      } else {
+        callback(res);
+      }
+    });
+  },
+
+  getData: function(startDate,callback) {
+    UserData.find({
+      timestamp: {$gte: new Date(startDate)}
     }).exec(function(err, res) {
       if (err) {
         console.log(err);
