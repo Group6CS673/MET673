@@ -1,0 +1,21 @@
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form id="myFile" class="navbar-form navbar-right" method="post" action="/updateData">
+            <label style="color:white">Welcome, </label>
+            <a style="color: white" id="updateData" ><%=user_name%></a>
+            <input type="hidden" value="<%=user_email%>" name="email"></input>
+            <a class="btn btn-success" href="/">Sign out</a>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
