@@ -38,20 +38,41 @@ module.exports = {
   // Store Mote Data
   userDataUpdate: function(user_data) {
     var date = new Date();
-    var userNewData = new UserData({
-      email: user_data.email,
-      timestamp: date.getTime(),
-      steps: user_data.steps,
-      calorie: user_data.calorie,
-      sleep_hours: user_data.sleep_hours,
-      heart_rates: user_data.heart_rates
-    });
-    userNewData.save(function(err) {
-      if (err) return handleError(err);
-      else {
-        console.log('Updated', userNewData);
+    UserData.findOne({
+      timestamp: {$gt: date.getTime() - 24 * 3600000, $lt: date.getTime() + 24 * 3600000}
+    }).exec(function(err, res){
+      if (err) {
+        console.log(err);
+      } else if (res) {
+        res.steps = user_data.steps || res.steps;
+        res.calorie = user_data.calorie || res.calorie;
+        res.sleep_hours = user_data.sleep_hours || res.sleep_hours;
+        res.heart_rates = user_data.heart_rates  || res.heart_rates;
+        res.save(function(err) {
+          if (err) return console.log(err);
+          else {
+            console.log("update Data");
+          }
+        })
+      } else {
+        var date = new Date();
+        var userNewData = new UserData({
+          email: user_data.email,
+          timestamp: date.getTime(),
+          steps: user_data.steps,
+          calorie: user_data.calorie,
+          sleep_hours: user_data.sleep_hours,
+          heart_rates: user_data.heart_rates
+        });
+        userNewData.save(function(err) {
+          if (err) return handleError(err);
+          else {
+            console.log('Updated', userNewData);
+          }
+        });
       }
     });
+
   },
 
   checkUser: function(user,callback){

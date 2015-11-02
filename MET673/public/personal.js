@@ -1,6 +1,6 @@
 var socket = io.connect('/');
 
-var lookUpTable = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+var lookUpTable = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 $(document).ready(function() {
   var d = new Date();
@@ -34,7 +34,7 @@ function drawSleepChart(arr) {
   for (var i = 0; i < arr.length; i++) {
     var date = new Date(arr[i].timestamp);
     data.addRows([
-      [lookUpTable[date.getDay() - 1], arr[i].sleep_hours]
+      [lookUpTable[date.getDay()], arr[i].sleep_hours]
     ]);
   }
   // Set chart options
@@ -52,7 +52,7 @@ function drawStepsChart(arr) {
   for (var i = 0; i < arr.length; i++) {
     var date = new Date(arr[i].timestamp);
     data.addRows([
-      [lookUpTable[date.getDay() - 1], arr[i].steps]
+      [lookUpTable[date.getDay()], arr[i].steps]
     ]);
   }
   // Set chart options
@@ -71,7 +71,7 @@ function drawCalorieChart(arr) {
   for (var i = 0; i < arr.length; i++) {
     var date = new Date(arr[i].timestamp);
     data.addRows([
-      [lookUpTable[date.getDay() - 1], arr[i].calorie]
+      [lookUpTable[date.getDay()], arr[i].calorie]
     ]);
   }
   // Set chart options
