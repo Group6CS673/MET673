@@ -10,7 +10,11 @@ var dbName = process.argv[2];
 module.exports = {
   // Initialize MongoDB connection with specified DB
   initializeDB: function() {
-    mongoose.connect('mongodb://localhost/' + dbName);
+
+    var uri = 'mongodb://SWENGUSER:CS673@ds041144.mongolab.com:41144/fitappdb';
+
+    //mongoose.connect('mongodb://localhost/' + dbName);
+    mongoose.connect(uri);
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, '... connection error ...'));
     db.once('open', function callback() {
