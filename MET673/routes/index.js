@@ -13,6 +13,21 @@ router.get('/', function(req, res, next) {
 router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Express' });
 });
+router.get('/nutrition', function(req, res, next) {
+  res.render('nutrition.ejs', { title: 'Express' });
+});
+router.get('/heartrate', function(req, res, next) {
+  res.render('heartrate.ejs', { title: 'Express' });
+});
+router.get('/sleep', function(req, res, next) {
+  res.render('sleep.ejs', { title: 'Express' });
+});
+router.get('/stepcount', function(req, res, next) {
+  res.render('stepcount.ejs', { title: 'Express' });
+});
+router.get('/calories', function(req, res, next) {
+  res.render('calories.ejs', { title: 'Express' });
+});
 
 router.post('/personal',urlencodedParser, function(request,response){
   mongodb.checkUserByEmail(request.body.email, function(res) {
