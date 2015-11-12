@@ -16,6 +16,24 @@ router.get('/signup', function(req, res, next) {
 router.get('/nutrition', function(req, res, next) {
   res.render('nutrition.ejs', { title: 'Express' });
 });
+router.get('/exercise', function(req, res, next) {
+  res.render('exercise.ejs', { title: 'Express' });
+});
+router.get('/exerc1', function(req, res, next) {
+  res.render('exerc1.ejs', { title: 'Express' });
+});
+router.get('/exerc2', function(req, res, next) {
+  res.render('exerc2.ejs', { title: 'Express' });
+});
+router.get('/exerc3', function(req, res, next) {
+  res.render('exerc3.ejs', { title: 'Express' });
+});
+router.get('/exerc4', function(req, res, next) {
+  res.render('exerc4.ejs', { title: 'Express' });
+});
+router.get('/exerc5', function(req, res, next) {
+  res.render('exerc5.ejs', { title: 'Express' });
+});
 router.get('/heartrate', function(req, res, next) {
   res.render('heartrate.ejs', { title: 'Express' });
 });

@@ -1,0 +1,4 @@
+So the initial website plan did not include a seperate page for sleep, steps, calories and heart rate. I have removed these from the home webpage. These are inputs for the user & I don't think we should add pages to that. At least not from the main homepage.
+We will only include information on Exercise & Nutrition as planned.
+
+Amal - 11/12
