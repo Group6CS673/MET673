@@ -10,12 +10,19 @@
 
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+				    <ul class="nav navbar-nav navbar-left">
+				<a href=/><h1 style="color:white">FitApp</h1></a>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			
           <form id="myFile" class="navbar-form navbar-right" method="post" action="/updateData">
             <label style="color:white">Welcome, </label>
             <a style="color: white" id="updateData" ><%=user_name%></a>
             <input type="hidden" value="<%=user_email%>" name="email"></input>
             <a class="btn btn-success" href="/">Sign out</a>
           </form>
+		  
+		  </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
