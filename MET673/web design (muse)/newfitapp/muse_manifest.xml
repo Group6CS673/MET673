@@ -1,0 +1,42 @@
+<manifest alg="2" build="2015.0.2.310" opt="true" iceEnabled="true" iceMarkupVersion="2" exportTarget="other" domain="fitapp.com" resolutions="1x" timestamp="1445209987198">
+  <folder name="css">
+    <file name="site_global.css" crc="3789673197"/>
+    <file name="nutrition.css" crc="4016563530" ref="nutrition"/>
+    <file name="iefonts_nutrition.css" crc="3778860088" ref="nutrition"/>
+    <file name="account.css" crc="362258075" ref="account"/>
+    <file name="iefonts_account.css" crc="4179616206" ref="account"/>
+    <file name="index.css" crc="490187165" ref="index"/>
+    <file name="iefonts_index.css" crc="47945329" ref="index"/>
+    <file name="general-statistics.css" crc="4193165151" ref="general-statistics"/>
+    <file name="iefonts_general-statistics.css" crc="4275692377" ref="general-statistics"/>
+    <file name="exercise.css" crc="477517391" ref="exercise"/>
+    <file name="iefonts_exercise.css" crc="4162713533" ref="exercise"/>
+    <file name="contacts.css" crc="118585283" ref="contacts"/>
+    <file name="iefonts_contacts.css" crc="278789995" ref="contacts"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="196614522" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="museutils.js" crc="275725342" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="webpro.js" crc="3883484123" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="musewpslideshow.js" crc="360574455" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="jquery.museoverlay.js" crc="342093292" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="touchswipe.js" crc="4218319045" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="pie.js" crc="3827607177" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="jquery.musepolyfill.bgsize.js" crc="185257658" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="jquery.scrolleffects.js" crc="206645848" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="jquery.watch.js" crc="3999102769" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+  </folder>
+  <folder name="images">
+    <file name="eating-and-training-2.jpg" crc="320739221" seo="true" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="blank.gif" crc="4208392903" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="fitness-gym-wallpapergym-girl-fitness-blog-health-tips-fitness-or-health-guide-3.jpg" crc="3878886629" seo="true" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="loading.gif" crc="3815509949" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+    <file name="492527_orig.jpg" crc="13795061" ref="index:account:nutrition:exercise:general-statistics:contacts"/>
+  </folder>
+  <file name="index.html" crc="374854238" seo="true" mt="1445209522544" redirect="true"/>
+  <file name="account.html" crc="440273701" seo="true" mt="1445209638080" redirect="true"/>
+  <file name="nutrition.html" crc="4013548456" seo="true" mt="1445209711040" redirect="true"/>
+  <file name="exercise.html" crc="4125581775" seo="true" mt="1445209787845" redirect="true"/>
+  <file name="general-statistics.html" crc="4289898412" seo="true" mt="1445209831388" redirect="true"/>
+  <file name="contacts.html" crc="3849834067" seo="true" mt="1445209908581" redirect="true"/>
+</manifest>
