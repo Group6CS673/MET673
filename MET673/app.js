@@ -55,11 +55,12 @@ io.on('connection', function(socket){
   });
 
   socket.on('personal_data',function(msg){
+    console.log("personal data : " + msg)
     mongodb.userDataUpdate(msg);
   });
 
   socket.on('get data', function(msg){
-    console.log(msg);
+    // console.log(msg);
     var startDate = msg.startDate;
     var email = msg.email;
     mongodb.getData(startDate, email, function(res) {

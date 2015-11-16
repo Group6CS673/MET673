@@ -39,11 +39,13 @@ module.exports = {
   userDataUpdate: function(user_data) {
     var date = new Date();
     UserData.findOne({
+      email: user_data.email,
       timestamp: {$gt: date.getTime() - 24 * 3600000, $lt: date.getTime() + 24 * 3600000}
     }).exec(function(err, res){
       if (err) {
         console.log(err);
       } else if (res) {
+        console.log(user_data);
         res.steps = user_data.steps || res.steps;
         res.calorie = user_data.calorie || res.calorie;
         res.sleep_hours = user_data.sleep_hours || res.sleep_hours;
@@ -51,7 +53,7 @@ module.exports = {
         res.save(function(err) {
           if (err) return console.log(err);
           else {
-            console.log("update Data");
+            console.log("update Data", res);
           }
         })
       } else {
