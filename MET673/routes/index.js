@@ -64,6 +64,9 @@ router.get('/calories', function(req, res, next) {
 router.get('/gyms', function(req, res, next) {
   res.render('gyms.ejs', { title: 'Express' });
 });
+router.get('/contact', function(req, res, next) {
+  res.render('contact.ejs', { title: 'Express' });
+});
 
 router.post('/personal',urlencodedParser, function(request,response){
   mongodb.checkUserByEmail(request.body.email, function(res) {
