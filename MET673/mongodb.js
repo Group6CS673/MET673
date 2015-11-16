@@ -5,7 +5,7 @@ var User = user.User;
 var UserData = user.UserData;
 
 // Specified db name from CLI
-var dbName = process.argv[2];
+// var dbName = process.argv[2];
 
 module.exports = {
   // Initialize MongoDB connection with specified DB
@@ -19,7 +19,7 @@ module.exports = {
     db.on('error', console.error.bind(console, '... connection error ...'));
     db.once('open', function callback() {
       console.info("... db open ...");
-      console.log("dbName is "+ dbName);
+      // console.log("dbName is "+ dbName);
     });
   },
   createUser: function(user_info) {
@@ -100,8 +100,10 @@ module.exports = {
     });
   },
 
-  getData: function(startDate,callback) {
+  getData: function(startDate,email,callback) {
+    console.log(email);
     UserData.find({
+      email: email,
       timestamp: {$gte: new Date(startDate)}
     }).exec(function(err, res) {
       if (err) {

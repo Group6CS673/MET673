@@ -5,7 +5,9 @@ var lookUpTable = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Frid
 $(document).ready(function() {
   var d = new Date();
   var start = new Date(d.getTime() - 7*24*3600000);
-  socket.emit('get data', start);
+  var email = $('#emailAddress').val();
+  socket.emit('get data', {startDate  : start,
+                            email     : email});
 
   $('#updateData').click(function(){
     $('#myFile').submit();

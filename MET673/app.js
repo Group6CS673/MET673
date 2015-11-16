@@ -58,9 +58,11 @@ io.on('connection', function(socket){
     mongodb.userDataUpdate(msg);
   });
 
-  socket.on('get data', function(startDate){
-    console.log(startDate);
-    mongodb.getData(startDate,function(res) {
+  socket.on('get data', function(msg){
+    console.log(msg);
+    var startDate = msg.startDate;
+    var email = msg.email;
+    mongodb.getData(startDate, email, function(res) {
       socket.emit('chart data', res);
       console.log(res);
     })
