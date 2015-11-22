@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var mongodb = require('../mongodb');
+var nodemailer = require('../node_modules/nodemailer');
 
 var jsonParser = bodyParser.json()
 
@@ -66,6 +67,9 @@ router.get('/gyms', function(req, res, next) {
 });
 router.get('/contact', function(req, res, next) {
   res.render('contact.ejs', { title: 'Express' });
+});
+router.get('/forgotpwd', function(req, res, next) {
+  res.render('forgotpwd.ejs', { title: 'Express' });
 });
 
 router.post('/personal',urlencodedParser, function(request,response){

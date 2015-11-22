@@ -114,5 +114,19 @@ module.exports = {
         callback(res);
       }
     });
-  }
+  },
+  
+    updateUserPassword: function(emailin, newPwd, callback) {
+	User.findOneAndUpdate(
+	  {email: emailin}, // query
+	  {$set: {password: newPwd}}, // replacement, replaces only the field "password"
+	  {}, // options
+	  function(err, res) {
+		  if (err){
+			  console.warn(err.message);  // returns error if no matching object found
+		  }else{
+			  callback(res);
+		  }
+	  });
+	}//end updateuserpassword
  }

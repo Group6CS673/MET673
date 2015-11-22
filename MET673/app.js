@@ -68,6 +68,56 @@ io.on('connection', function(socket){
       console.log(res);
     })
   });
+  
+    socket.on('changePWD', function(msg){
+		if (validator.validate(msg.email)) {
+		mongodb.checkUserByEmail(msg.email, function(res){
+        if (res) {
+          socket.emit('email in db','Email is in the database.');
+		  console.log("New encrypted password: " + msg.encryptedpwd);
+		  console.log("Email from app.js " + msg.email);
+		  mongodb.updateUserPassword(msg.email, msg.encryptedpwd, function(res2){
+			  if(res2){
+				  		console.log('changing pwd');
+						var nodemailer = require('./node_modules/nodemailer');
+						console.log('nodemailer set');
+						var transporter = nodemailer.createTransport({
+							service: 'Gmail',
+							auth: {
+								user: 'fitappwellness@gmail.com',
+								pass: 'SWENG673'
+							}
+						});
+						var msgtext = "Hello FitApp User - your password has been reset.  Your new password is " + msg.plaintextpassword;
+					
+						transporter.sendMail({
+						   from: "FitApp <fitappwellness@gmail.com>", // sender address
+						   to: "FitApp User <" + msg.email + ">", // comma separated list of receivers
+						   subject: "FitApp - Password Reset", // Subject line
+						   text: msgtext // plaintext body
+							}, function(error, response){
+						   if(error){
+							   console.log(error);
+						   }else{
+							   console.log("Message sent: " + response.message);
+						   }
+						});
+				  console.log("Password Updated");
+				  
+			  } else {
+				  console.log("Password Update Failed");
+			  }
+		  });
+        } else {
+          socket.emit('email is not in the database','Email is not in the database');
+        }
+      });
+    } else {
+      socket.emit('email bad','Please input valid email.');
+    }
+	});//end changepwd
+  
+  
 });
 
 module.exports = app;

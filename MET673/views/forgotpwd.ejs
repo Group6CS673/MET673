@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<% include ./header %>
+  <script src="homepage.js"></script>
+  <script src="retrievePassword.js"></script>
+  </head>
+
+  <body>
+
+  <% include ./navbarNoSession %>
+
+    <div class="container">
+
+      <hr>
+		<h1>Forgot your password?</h1>
+		<h3>Input your email and we will send you a new password</h3>
+	
+		<div class="form-group">
+		  <input type="text" placeholder="EmailPwd" class="form-control" name="emailpwd" id="emailpwd">
+		</div>
+	   <button class="btn btn-default text-center" id="submitpwd" >submit</button>
+	   <button class="btn btn-default text-center" id="cancelpwd">cancel</button>
+   
+    </div> <!-- /container -->
+	
+
+
+<% include ./footer %>

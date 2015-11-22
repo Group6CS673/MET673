@@ -22,6 +22,7 @@
     "path": "*"
   },
   "dependencies": {
-    "express-session": "^1.11.3"
+    "express-session": "^1.11.3",
+	"nodemailer": "^1.10.0"
   }
 }
