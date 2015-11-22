@@ -24,16 +24,22 @@
               </ul>
             </li>
 			</ul>
+
 			<ul class="nav navbar-nav navbar-right">
 			
-          <form id="myFile" class="navbar-form navbar-right" method="post" action="/updateData">
-            <label style="color:white">Welcome, </label>
-            <a style="color: white" id="updateData" ><%=user_name%></a>
-            <input type="hidden" id="emailAddress" value="<%=user_email%>" name="email"></input>
-            <a class="btn btn-success" href="/">Sign out</a>
-          </form>
+			<div id="navbarRight">
+		
+			  <form id="myFile" class="navbar-form navbar-right" method="post" action="/updateData">
+				<label style="color:white">Welcome, </label>
+				<a style="color: white" id="updateData" ><%=user_name%></a>
+				<input type="hidden" id="emailAddress" value="<%=user_email%>" name="email"></input>
+				<a class="btn btn-success" href="/">Sign out</a>
+			  </form>
+
+		  </div>
 		  
 		  </ul>
+
         </div><!--/.navbar-collapse -->
       </div>
     </nav>

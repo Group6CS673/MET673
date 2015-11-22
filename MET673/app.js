@@ -5,6 +5,7 @@ var io = require('socket.io')(http);
 var path = require('path');
 var mongodb = require('./mongodb');
 var validator = require("email-validator");
+var connected = 0;
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -29,10 +30,22 @@ io.on('connection', function(socket){
   socket.on('createNewUser', function(user_info){
     mongodb.createUser(user_info);
   });
+  
+    socket.on('isConnected', function(msg){
+    if(connected == 0)
+	{
+		socket.emit('user not connected');
+	}
+	else
+	{
+        socket.emit('user connected');		
+	}
+  });
 
   socket.on('check user', function(user_info) {
     mongodb.checkUser(user_info, function(res){
       if (res) {
+		  connected = 1;
         socket.emit('user verified');
       } else {
         socket.emit('user verification failed');

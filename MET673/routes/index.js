@@ -87,6 +87,12 @@ router.post('/updateData', urlencodedParser,function(request, response, next) {
   });
 });
 
+router.post('/updateData2', urlencodedParser,function(request, response, next) {
+  mongodb.checkUserByEmail(request.body.email, function(res) {
+    response.render('updateData',{ user_name: res.user_name, user_email: request.body.email});
+  });
+});
+
 
 
 module.exports = router;

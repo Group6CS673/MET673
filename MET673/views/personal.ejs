@@ -2,7 +2,9 @@
 <html lang="en">
 
   <% include ./header %>
+  		<script src="homepage.js"></script>
         <script src="personal.js"></script>
+
   </head>
 
   <body>
@@ -25,7 +27,14 @@
 		<h3>Email: <%=user_email%> </h3>
 		</hr>
 		<br>
-			<h2>Wellness Tips</h2>
+		
+			  <form id="myFile2" method="post" action="/updateData2">
+				<a class="btn btn-success" id="updateData2">Input New Data Points</a>
+				<input type="hidden" id="emailAddress" value="<%=user_email%>" name="email"></input>
+				<input type="hidden" id="username" value="<%=user_name%>" name="user_name"></input>
+			  </form>
+			  
+			<h2>Wellness Tips Based on Your Data</h2>
 			<ol>
 			
 		<div id="sleepTips">

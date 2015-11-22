@@ -1,5 +1,3 @@
-var socket = io.connect('/');
-
 var lookUpTable = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 $(document).ready(function() {
@@ -11,6 +9,11 @@ $(document).ready(function() {
 
   $('#updateData').click(function(){
     $('#myFile').submit();
+  });
+  
+    
+  $('#updateData2').click(function(){
+    $('#myFile2').submit();
   });
 });
 
