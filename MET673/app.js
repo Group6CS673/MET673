@@ -73,7 +73,7 @@ io.on('connection', function(socket){
 		if (validator.validate(msg.email)) {
 		mongodb.checkUserByEmail(msg.email, function(res){
         if (res) {
-          socket.emit('email in db','Email is in the database.');
+          socket.emit('email in db','Password was reset');
 		  console.log("New encrypted password: " + msg.encryptedpwd);
 		  console.log("Email from app.js " + msg.email);
 		  mongodb.updateUserPassword(msg.email, msg.encryptedpwd, function(res2){
@@ -109,7 +109,7 @@ io.on('connection', function(socket){
 			  }
 		  });
         } else {
-          socket.emit('email is not in the database','Email is not in the database');
+          socket.emit('email is not in the database','Email is not in the database.  Check for typos, or sign up.');
         }
       });
     } else {

@@ -46,6 +46,7 @@ socket.on('email bad', function(msg){
 
 socket.on('email in db', function(msg){
   alert(msg);
+  window.location.href="/";
 })
 
 socket.on('email is not in the database', function(msg){
