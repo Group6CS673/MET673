@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<% include ./header %>
+  <script src="homepage.js"></script>
+  <script src="trends.js"></script>
+  
+  </head>
+
+  <body>
+
+  <% include ./navbarNoSession %>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1><a href=/>FitApp </a> Overall Health Trends</h1>
+      </div>
+    </div>
+
+
+<ul class="nav nav-tabs" style="margin-left=50%; margin-right=50%">
+  <!-- <li class="active"><a data-toggle="tab" href="#home">Summary</a></li> -->
+  <li class="active"><a data-toggle="tab" href="#menu1">Sleep Trends</a></li>
+  <li><a data-toggle="tab" href="#menu2">Step Trends</a></li>
+  <li><a data-toggle="tab" href="#menu3">Calorie Trends</a></li>
+</ul>
+
+<div class="tab-content">
+  <!-- <div id="home" class="tab-pane fade in active">
+	<div class="container" style="border:10px solid black">
+		<hr>
+		Our Users have input a lot of data!
+		</hr>
+
+	</div>
+  </div> -->
+  <div id="menu1" class="tab-pane fade in active">
+      <div class="container" style="border:10px solid black">
+        <br><br>
+        <p class="text-center" style="font-size:30px">Sleep Trends</p>
+        <div class="row">
+          <div id="sleep_hours" class="col-md-8 col-md-push-2" ></div>
+        </div>
+      </div>
+  </div>
+    <div id="menu2" class="tab-pane fade">
+      <div class="container" style="border:10px solid black">
+        <br><br>
+        <p class="text-center" style="font-size:30px">Step Trends</p>
+        <div class="row">
+          <div id="running_steps" class="col-md-8 col-md-push-2" ></div>
+        </div>
+	  </div>
+  </div>
+      <div id="menu3" class="tab-pane fade">
+      <div class="container" style="border:10px solid black">
+        <br><br>
+        <p class="text-center" style="font-size:30px">Nutrition Trends</p>
+        <div class="row">
+          <div id="calorie" class="col-md-8 col-md-push-2" ></div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<% include ./footer %>

@@ -117,7 +117,14 @@ io.on('connection', function(socket){
     }
 	});//end changepwd
   
-  
+  //gets the trend data for the overall wellness charts
+    socket.on('get trend data', function(msg){
+		var startDate = msg.startDate;
+		mongodb.getTrendData(startDate, function(res) {
+		socket.emit('chart trend data', res);
+		console.log(res);
+    })
+  });
 });
 
 module.exports = app;

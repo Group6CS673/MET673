@@ -128,5 +128,19 @@ module.exports = {
 			  callback(res);
 		  }
 	  });
-	}//end updateuserpassword
+	},//end updateuserpassword
+	
+	//function to get data on overall 
+	getTrendData: function(startDate,callback) {
+    console.log('getting overall trend data');
+    UserData.find({
+      timestamp: {$gte: new Date(startDate)}
+    }).exec(function(err, res) {
+      if (err) {
+        console.log(err);
+      } else {
+        callback(res);
+      }
+    });
+  }//end getTrendData
  }

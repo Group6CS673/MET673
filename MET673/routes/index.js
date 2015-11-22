@@ -71,6 +71,9 @@ router.get('/contact', function(req, res, next) {
 router.get('/forgotpwd', function(req, res, next) {
   res.render('forgotpwd.ejs', { title: 'Express' });
 });
+router.get('/trends', function(req, res, next) {
+  res.render('trends.ejs', { title: 'Express' });
+});
 
 router.post('/personal',urlencodedParser, function(request,response){
   mongodb.checkUserByEmail(request.body.email, function(res) {
