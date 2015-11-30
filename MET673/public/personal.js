@@ -15,6 +15,7 @@ $(document).ready(function() {
   $('#updateData2').click(function(){
     $('#myFile2').submit();
   });
+  
 });
 
 socket.on('chart data', function(arr) {
@@ -30,6 +31,7 @@ function drawChart(arr) {
   drawSleepChart(arr);
   drawStepsChart(arr);
   drawCalorieChart(arr);
+  drawHeartRateChart(arr);
 }
 
 function drawSleepChart(arr) {
@@ -93,6 +95,28 @@ function drawCalorieChart(arr) {
   
   getNutritionTips(arr);
 }
+
+function drawHeartRateChart(arr) {
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Days');
+  data.addColumn('number', 'HeartRate');
+  for (var i = 0; i < arr.length; i++) {
+    var date = new Date(arr[i].timestamp);
+    data.addRows([
+      [lookUpTable[date.getDay()], arr[i].heart_rates]
+    ]);
+  }
+  // Set chart options
+  var options = {'width':800,
+                 'height':600};
+
+  // Instantiate and draw our chart, passing in some options.
+  var chart = new google.visualization.LineChart(document.getElementById('HeartRate'));
+  chart.draw(data, options);
+  
+  getHeartTips(arr);
+}
+
 
 function getSleepTips(arr) {
 	console.log("enter sleep");
@@ -254,5 +278,47 @@ function getStepTips(arr){
 		maxmsg = "Your best day had " + max + " steps.";
 		document.getElementById('ExerciseTips').innerHTML += '<li>' + maxmsg + '</li>';
 
+	}
+}
+
+function getHeartTips(arr){
+	var totalpoints = 0;
+	var totalSteps = 0;
+	var min = 0;
+	var max = 0;
+	var avg = 0;
+	for (var i = 0; i < arr.length; i++) {
+		if(i == 0)
+		{
+			min = arr[i].heart_rates;
+			max = arr[i].heart_rates;
+		}
+    totalSteps += arr[i].heart_rates;
+	totalpoints = totalpoints + 1;
+	if(min > arr[i].heart_rates)
+	{
+		min = arr[i].heart_rates;
+	}
+	if(max < arr[i].heart_rates)
+	{
+		max = arr[i].heart_rates;
+	}
+	
+	}//end for
+	if(totalSteps !== 0)
+	{
+		avg = totalSteps / arr.length;
+	}
+	if(totalpoints == 0)
+	{
+		document.getElementById('HeartRateTips').innerHTML += 'You don\'t have any heart rate entries.  Try inputing the amount of steps travelled today.';
+	}
+	else
+	{
+		document.getElementById('HeartRateTips').innerHTML += '<li>You have ' + totalpoints + ' heart rate entries</li>';
+		var avgmsg = "Your average this week is " + avg + " beats.";
+
+		document.getElementById('HeartRateTips').innerHTML += '<li>' + avgmsg + '</li>';
+		
 	}
 }
