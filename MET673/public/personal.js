@@ -147,6 +147,7 @@ function getSleepTips(arr) {
 	if(totalhours !== 0)
 	{
 		avg = totalhours / arr.length;
+		avg = avg.toFixed(2);
 	}
 	
 	if(totalpoints == 0)
@@ -204,6 +205,7 @@ function getNutritionTips(arr) {
 	if(totalCalories !== 0)
 	{
 		avg = totalCalories / arr.length;
+		avg = avg.toFixed(2);
 	}
 	if(totalpoints == 0)
 	{
@@ -254,6 +256,7 @@ function getStepTips(arr){
 	if(totalSteps !== 0)
 	{
 		avg = totalSteps / arr.length;
+		avg = avg.toFixed(2);
 	}
 	if(totalpoints == 0)
 	{
@@ -308,6 +311,7 @@ function getHeartTips(arr){
 	if(totalSteps !== 0)
 	{
 		avg = totalSteps / arr.length;
+		avg = avg.toFixed(2);
 	}
 	if(totalpoints == 0)
 	{
